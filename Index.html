@@ -1,187 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brodhead Creatio Lead Form</title>
 
-    <!-- jQuery and Creatio Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://webtracking-v01.bpmonline.com/JS/track-cookies.js"></script>
-    <script src="https://webtracking-v01.creatio.com/JS/create-object.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brodhead Creatio Lead Form</title>
 
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f8f9fa;
-        padding: 40px;
-      }
-      form {
-        max-width: 600px;
-        margin: auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-      }
-      .form-group {
-        margin-bottom: 15px;
-      }
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: 600;
-      }
-      input,
-      select,
-      button {
-        width: 100%;
-        padding: 10px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-      }
-      button {
-        background: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #0056b3;
-      }
-      .checkbox-group {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .checkbox-group input[type="checkbox"] {
-        width: auto;
-        margin: 0;
-      }
-      .checkbox-group label {
-        display: inline;
-        font-weight: normal;
-        margin: 0;
-      }
-      #success-message {
-        display: none;
-        text-align: center;
-        color: green;
-        margin-top: 20px;
-        font-size: 18px;
-      }
-    </style>
-  </head>
+  <!-- jQuery and Creatio Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://webtracking-v01.bpmonline.com/JS/track-cookies.js"></script>
+  <script src="https://webtracking-v01.creatio.com/JS/create-object.js"></script>
 
-  <body>
-    <form id="leadForm" name="landingForm" onsubmit="submitLeadForm(); return false;">
-      <h2>Brodhead Banking Lead Form</h2>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 40px;
+    }
 
-      <div class="form-group">
-        <label for="name">Full Name*</label>
-        <input type="text" id="name" name="Name" placeholder="Your Name" required />
-      </div>
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-      <div class="form-group">
-        <label for="email">Email*</label>
-        <input type="email" id="email" name="Email" placeholder="Your Email" required />
-      </div>
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
 
-      <div class="form-group checkbox-group">
-        <input type="checkbox" id="emailoptin" name="DoNotUseMail" />
-        <label for="emailoptin">I agree to receive emails</label>
-      </div>
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-      <div class="form-group">
-        <label for="mobile">Phone Number</label>
-        <input type="tel" id="mobile" name="MobilePhone" placeholder="Your Phone Number" />
-      </div>
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
 
-      <div class="form-group">
-        <label for="company-name">Company Name</label>
-        <input type="text" id="company-name" name="ImpCompanyName" placeholder="Company Name" />
-      </div>
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
 
-      <div class="form-group">
-        <label for="form-name">Form Name*</label>
-        <input type="text" id="form-name" name="ImpFormName" value="Business" required />
-      </div>
+    button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
 
-      <div class="form-group">
-        <label for="branchId">Branch ID</label>
-        <input type="number" id="branchId" name="ImpBranchId" />
-      </div>
+    button:hover {
+      background: #0056b3;
+    }
 
-      <div class="form-group">
-        <label for="primary-branch">Select Branch</label>
-        <select id="primary-branch" name="ImpPrimaryBranch">
-          <option value="">Select Branch</option>
-          <option value="d19926a0-0db5-418b-b4e2-e4ca0ee776af">Brodhead</option>
-          <option value="b6fbfdec-f72b-4811-85b6-a94e79fcbe12">Milton</option>
-          <option value="d01a2515-2e73-463f-905d-1e142265d270">Orfordville</option>
-        </select>
-      </div>
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-      <div class="form-group">
-        <label for="product-interested">Interested In</label>
-        <select id="product-interested" name="ImpProductInterested">
-          <option value="">Select an Option</option>
-          <option value="70f65e19-d627-4763-bc4c-3a054613134c">Business Banking Products</option>
-          <option value="f84ed14d-aae7-48f7-8825-49f2176a6a88">Business Banking Services</option>
-          <option value="363c151f-2a51-4310-8da5-881031e74dd7">Getting Started with Your Business</option>
-        </select>
-      </div>
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+    }
 
-      <button type="submit">Submit</button>
-    </form>
+    .checkbox-group label {
+      display: inline;
+      font-weight: normal;
+      margin: 0;
+    }
 
-    <div id="success-message">
-      <p>Form submitted successfully!</p>
+    #success-message {
+      display: none;
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="leadForm" name="landingForm" onsubmit="submitLeadForm(); return false;">
+    <h2>Brodhead Banking Lead Form</h2>
+
+    <div class="form-group">
+      <label for="name">Name*</label>
+      <input type="text" id="name" name="Name" placeholder="Your Name" required />
     </div>
 
-    <script>
-      // Creatio Lead Form Configuration
-      var config = {
-        fields: {
-          "Name": "#name",
-          "Email": "#email",
-          "MobilePhone": "#mobile",
-          "DoNotUseMail": "#emailoptin",
-          "ImpBranchId": "#branchId",
-          "ImpProductInterested": "#product-interested",
-          "ImpPrimaryBranch": "#primary-branch",
-          "ImpFormName": "#form-name",
-          "ImpCompanyName": "#company-name"
-        },
-        contactFields: {
-          FullName: "#name",
-          Phone: "#mobile",
-          Email: "#email"
-        },
-        customFields: {},
-        landingId: "8f7f531d-ef48-4164-b1db-df89de45a811", // Your actual Creatio Landing ID
-        serviceUrl:
-          "https://dev-brodhead.creatio.com/0/ServiceModel/GeneratedObjectWebFormService.svc/SaveWebFormObjectData",
-        redirectUrl: ""
-      };
+    <div class="form-group">
+      <label for="company-name">Company Name</label>
+      <input type="text" id="company-name" name="ImpCompanyName" placeholder="Company Name" />
+    </div>
 
-      function submitLeadForm() {
-        landing.createObjectFromLanding(config);
-        $("#leadForm").hide();
-        $("#success-message").fadeIn();
-      }
+    <div class="form-group">
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="Email" placeholder="Your Email" required />
+    </div>
 
-      function initLanding() {
-        landing.initLanding(config);
-      }
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="emailoptin" name="DoNotUseMail" />
+      <label for="emailoptin">Opt-out of marketing emails</label>
+    </div>
 
-      jQuery(document).ready(initLanding);
-    </script>
-  </body>
+    <div class="form-group">
+      <label for="mobile">Phone Number</label>
+      <input type="tel" id="mobile" name="MobilePhone" placeholder="Your Phone Number" />
+    </div>
+
+    <!-- ✅ Hidden fields -->
+    <input type="hidden" id="form-name" name="ImpFormName" class="hidden-field" />
+    <input type="hidden" id="branchId" name="ImpBranchId" class="hidden-field" />
+
+    <div class="form-group">
+      <label for="primary-branch">Select Branch*</label>
+      <select id="primary-branch" name="ImpPrimaryBranch" required>
+        <option value="">Select Branch</option>
+        <option value="d19926a0-0db5-418b-b4e2-e4ca0ee776af">Brodhead</option>
+        <option value="b6fbfdec-f72b-4811-85b6-a94e79fcbe12">Milton</option>
+        <option value="d01a2515-2e73-463f-905d-1e142265d270">Orfordville</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="product-interested">What are you interested in?</label>
+      <select id="product-interested" name="ImpProductInterested">
+        <option value="">Select an Option</option>
+        <option value="70f65e19-d627-4763-bc4c-3a054613134c">Business Banking Products</option>
+        <option value="f84ed14d-aae7-48f7-8825-49f2176a6a88">Business Banking Services</option>
+        <option value="363c151f-2a51-4310-8da5-881031e74dd7">Getting Started with Your Business</option>
+      </select>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="success-message">
+    <p>Form submitted successfully!</p>
+  </div>
+
+  <script>
+    // Creatio Lead Form Configuration
+    var config = {
+      fields: {
+        "Name": "#name",
+        "Email": "#email",
+        "MobilePhone": "#mobile",
+        "DoNotUseMail": "#emailoptin",
+        "ImpBranchId": "#branchId",
+        "ImpProductInterested": "#product-interested",
+        "ImpPrimaryBranch": "#primary-branch",
+        "ImpFormName": "#form-name",
+        "ImpCompanyName": "#company-name"
+      },
+      contactFields: {
+        FullName: "#name",
+        Phone: "#mobile",
+        Email: "#email"
+      },
+      customFields: {},
+      landingId: "8f7f531d-ef48-4164-b1db-df89de45a811", // Your actual Creatio Landing ID
+      serviceUrl:
+        "https://dev-brodhead.creatio.com/0/ServiceModel/GeneratedObjectWebFormService.svc/SaveWebFormObjectData",
+      redirectUrl: ""
+    };
+
+    function submitLeadForm() {
+      // ✅ Manually set hidden field values before Creatio reads them
+      $("#form-name").val("Business");
+      $("#branchId").val("1");
+
+      landing.createObjectFromLanding(config);
+      $("#leadForm").hide();
+      $("#success-message").fadeIn();
+      
+    }
+
+    function initLanding() {
+      landing.initLanding(config);
+    }
+
+    jQuery(document).ready(initLanding);
+  </script>
+</body>
+
 </html>
